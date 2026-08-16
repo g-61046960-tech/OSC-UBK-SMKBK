@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ONE STOP CENTRE | Unit Bimbingan dan Kaunseling SMK Buluh Kasap</title>
+<meta name="description" content="Portal interaktif One Stop Centre Unit Bimbingan dan Kaunseling SMK Buluh Kasap">
+<style>
+:root{
+  --purple:#5b21b6;--purple2:#7c3aed;--purple3:#9333ea;--deep:#2f0d53;
+  --gold:#f6d365;--bg:#f7f3fc;--panel:#fff;--text:#28183d;--muted:#746687;
+  --line:#e8dcf5;--shadow:0 16px 40px rgba(66,24,102,.12);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text);background:var(--bg)}
+button,input{font:inherit}
+button{cursor:pointer}
+.shell{min-height:100vh;display:grid;grid-template-columns:300px 1fr}
+.sidebar{
+  position:sticky;top:0;height:100vh;overflow:auto;padding:18px 15px 24px;
+  color:#fff;background:
+  radial-gradient(circle at 10% 0%,rgba(255,255,255,.10),transparent 25%),
+  linear-gradient(180deg,#32104f,#4e1778 58%,#2f0d53);
+  border-right:1px solid rgba(255,255,255,.08)
+}
+.logo{display:flex;align-items:center;gap:12px;padding:8px 8px 15px;border-bottom:1px solid #ffffff16}
+.logo-mark{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,var(--gold),#fff1ad);color:#3a174f;display:grid;place-items:center;font-size:1.4rem;font-weight:950}
+.logo strong{display:block;font-size:1rem} .logo small{display:block;color:#e7d9f3;margin-top:3px;line-height:1.35}
+.side-search{margin:16px 5px 10px}
+.side-search input{width:100%;border:1px solid #ffffff20;background:#ffffff0e;color:#fff;border-radius:13px;padding:11px 12px;outline:none}
+.side-search input::placeholder{color:#d8c6e8}
+.nav-group{margin-top:18px} .nav-label{padding:0 9px 7px;color:#d8c7e8;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.7px}
+.nav-item{width:100%;border:0;background:transparent;color:#f4edfa;display:flex;align-items:center;gap:10px;text-align:left;padding:10px 10px;border-radius:12px;margin:2px 0;font-size:.87rem;font-weight:750}
+.nav-item:hover{background:#ffffff12} .nav-item.active{background:#fff;color:#4c176f;box-shadow:0 7px 20px #0002}
+.nav-icon{width:28px;text-align:center;font-size:1rem}
+.side-footer{margin-top:22px;padding:14px 9px 0;border-top:1px solid #ffffff16;color:#d8c7e8;font-size:.78rem;line-height:1.55}
+.side-footer b{color:var(--gold)}
+
+.workspace{min-width:0}
+.topbar{position:sticky;top:0;z-index:30;height:72px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 22px;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top-left{display:flex;align-items:center;gap:11px;min-width:0}
+.menu-btn{display:none;border:1px solid var(--line);background:#fff;border-radius:11px;padding:9px 11px}
+.breadcrumb small{display:block;color:var(--muted);font-size:.74rem}.breadcrumb strong{display:block;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top-actions{display:flex;gap:8px;align-items:center}.top-actions button{border:1px solid var(--line);background:#fff;color:#5b21b6;border-radius:11px;padding:9px 11px;font-weight:850;font-size:.82rem}
+.top-actions .primary{background:#5b21b6;color:#fff;border-color:#5b21b6}
+
+.home{padding:30px 24px 58px;max-width:1240px;margin:auto}
+.hero{position:relative;overflow:hidden;padding:34px;border-radius:28px;color:#fff;background:linear-gradient(135deg,#48136c,#6d28d9 55%,#9b45d1);box-shadow:var(--shadow)}
+.hero:after{content:"";position:absolute;right:-70px;bottom:-110px;width:300px;height:300px;border-radius:50%;border:52px solid rgba(246,211,101,.15)}
+.hero-content{position:relative;z-index:1;max-width:830px}.eyebrow{display:inline-flex;padding:7px 11px;border-radius:999px;background:var(--gold);color:#38184d;font-weight:900;font-size:.78rem}
+.hero h1{font-size:clamp(2.25rem,5vw,4.7rem);line-height:.95;margin:17px 0 12px;letter-spacing:-2px}.hero p{margin:0;color:#f2e8fa;line-height:1.75}
+.hero-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:21px}.hero-buttons button{border:0;border-radius:12px;padding:11px 14px;font-weight:900}
+.hero-buttons .gold{background:var(--gold);color:#3b1e4d}.hero-buttons .glass{background:#ffffff14;color:#fff;border:1px solid #ffffff22}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:18px}.metric{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 9px 22px #42135e0a}.metric b{display:block;font-size:1.35rem;color:#5b21b6}.metric span{color:var(--muted);font-size:.82rem}
+.section-head{margin:30px 0 14px}.section-head h2{margin:0;color:#42145e;font-size:1.5rem}.section-head p{margin:5px 0 0;color:var(--muted);font-size:.9rem;line-height:1.6}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.module-card{border:1px solid var(--line);background:#fff;border-radius:20px;padding:17px;text-align:left;display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;box-shadow:0 9px 22px #42135e0a;transition:.18s}
+.module-card:hover{transform:translateY(-2px);box-shadow:0 15px 30px #42135e14;border-color:#d9c4ef}
+.card-icon{width:48px;height:48px;border-radius:15px;background:#f4eaff;display:grid;place-items:center;font-size:1.35rem}
+.card-copy strong{display:block;color:#41145e}.card-copy small{display:block;margin-top:5px;color:var(--muted);line-height:1.5}.card-arrow{color:#7c3aed;font-weight:950;font-size:1.2rem}
+
+.viewer{display:none;height:calc(100vh - 72px);background:#eee7f4}
+.viewer.active{display:block}
+.viewer iframe{width:100%;height:100%;border:0;background:#fff;display:block}
+.loading{position:absolute;inset:72px 0 0 300px;display:none;place-items:center;background:#f7f3fc;z-index:15;color:#6d28d9;font-weight:850}
+.loading.show{display:grid}
+.empty{display:none;margin:16px 5px;padding:12px;border:1px dashed #ffffff35;border-radius:12px;color:#e3d6ee;text-align:center;font-size:.82rem}
+.mobile-overlay{display:none}
+
+@media(max-width:1050px){
+  .shell{grid-template-columns:250px 1fr}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .loading{left:250px}
+}
+@media(max-width:760px){
+  .shell{display:block}
+  .sidebar{position:fixed;left:-310px;top:0;width:290px;z-index:100;transition:.22s;box-shadow:12px 0 35px #0004}
+  .sidebar.open{left:0}
+  .mobile-overlay{position:fixed;inset:0;background:#16071f88;z-index:90;display:none}
+  .mobile-overlay.show{display:block}
+  .menu-btn{display:block}
+  .topbar{padding:10px 12px}
+  .top-actions button:not(.primary){display:none}
+  .home{padding:18px 14px 42px}
+  .hero{padding:25px 20px}
+  .cards{grid-template-columns:1fr}
+  .metrics{grid-template-columns:1fr 1fr}
+  .viewer{height:calc(100vh - 72px)}
+  .loading{left:0}
+}
+@media(max-width:430px){
+  .metrics{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:2.45rem}
+}
+</style>
+</head>
+<body>
+<div class="mobile-overlay" id="overlay"></div>
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="logo">
+      <div class="logo-mark">OSC</div>
+      <div><strong>ONE STOP CENTRE</strong><small>Unit Bimbingan dan Kaunseling<br>SMK Buluh Kasap</small></div>
+    </div>
+    <div class="side-search"><input id="menuSearch" type="search" placeholder="Cari menu..."></div>
+    <nav id="sideNav"><div class="nav-group"><div class="nav-label">Utama</div>
+<button class="nav-item" type="button" data-module="menu-induk" data-search="menu induk one stop centre utama menu induk one stop centre ubk"><span class="nav-icon">🏠</span><span>Menu Induk One Stop Centre</span></button>
+<button class="nav-item" type="button" data-module="jawatankuasa" data-search="jawatankuasa &amp; carta organisasi jawatankuasa carta organisasi"><span class="nav-icon">👥</span><span>Jawatankuasa &amp; Carta Organisasi</span></button>
+<button class="nav-item" type="button" data-module="visi-misi" data-search="visi &amp; misi visi misi"><span class="nav-icon">🎯</span><span>Visi &amp; Misi</span></button>
+<button class="nav-item" type="button" data-module="pekeliling" data-search="pekeliling &amp; rujukan kaunseling pekeliling rujukan garis panduan dokumen"><span class="nav-icon">📚</span><span>Pekeliling &amp; Rujukan Kaunseling</span></button>
+<button class="nav-item" type="button" data-module="objektif" data-search="objektif pbnk &amp; piagam pelanggan objektif pbnk piagam pelanggan"><span class="nav-icon">🌟</span><span>Objektif PBNK &amp; Piagam Pelanggan</span></button>
+<button class="nav-item" type="button" data-module="jadual" data-search="jadual waktu gbksm 2026 jadual waktu gbksm haslinda nurul"><span class="nav-icon">🗓️</span><span>Jadual Waktu GBKSM 2026</span></button>
+</div>
+<div class="nav-group"><div class="nav-label">Perkhidmatan Digital</div>
+<button class="nav-item" type="button" data-module="online" data-search="perkhidmatan atas talian perkhidmatan atas talian telegram tingkatan"><span class="nav-icon">📲</span><span>Perkhidmatan Atas Talian</span></button>
+<button class="nav-item" type="button" data-module="psikososial" data-search="talian sokongan psikososial talian sokongan psikososial bantuan video"><span class="nav-icon">💜</span><span>Talian Sokongan Psikososial</span></button>
+</div>
+<div class="nav-group"><div class="nav-label">Media &amp; Pameran</div>
+<button class="nav-item" type="button" data-module="nadi" data-search="n.a.d.i smeks nadi smeks jiwa dijaga potensi dijana"><span class="nav-icon">💚</span><span>N.A.D.I SMeKs</span></button>
+</div></nav>
+    <div class="empty" id="navEmpty">Tiada menu dijumpai.</div>
+    <div class="side-footer">Portal bersepadu UBK SMKBK<br><b>Design by @Linda</b></div>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar">
+      <div class="top-left">
+        <button class="menu-btn" id="menuBtn" type="button">☰</button>
+        <div class="breadcrumb"><small>ONE STOP CENTRE / <span id="groupName">Utama</span></small><strong id="pageTitle">Laman Utama</strong></div>
+      </div>
+      <div class="top-actions">
+        <button id="homeBtn" type="button">⌂ Utama</button>
+        <button id="newTabBtn" type="button">↗ Buka Penuh</button>
+        <button class="primary" id="menuIndukBtn" type="button">☷ Menu Induk</button>
+      </div>
+    </header>
+
+    <section class="home" id="home">
+      <div class="hero">
+        <div class="hero-content">
+          <span class="eyebrow">PORTAL DIGITAL BERSEPADU</span>
+          <h1>ONE STOP CENTRE</h1>
+          <p>Semua halaman Unit Bimbingan dan Kaunseling SMK Buluh Kasap kini disatukan dalam satu portal interaktif. Pilih menu di sebelah kiri atau gunakan kad akses pantas di bawah.</p>
+          <div class="hero-buttons">
+            <button class="gold" id="exploreBtn" type="button">Terokai Menu Induk</button>
+            <button class="glass" id="onlineBtn" type="button">Perkhidmatan Atas Talian</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><b>9</b><span>Modul web bersepadu</span></div>
+        <div class="metric"><b>1 Portal</b><span>Navigasi pusat yang konsisten</span></div>
+        <div class="metric"><b>Responsif</b><span>Komputer, tablet & telefon</span></div>
+        <div class="metric"><b>Interaktif</b><span>Carian, menu, paparan penuh</span></div>
+      </div>
+
+      <div class="section-head"><h2>Akses Pantas</h2><p>Pilih mana-mana modul untuk dibuka terus di dalam portal tanpa perlu mencari fail berasingan.</p></div>
+      <div class="cards" id="moduleCards"><button class="module-card" type="button" data-module="jawatankuasa" data-search="jawatankuasa &amp; carta organisasi struktur jawatankuasa dan carta organisasi unit bimbingan dan kaunseling. jawatankuasa carta organisasi">
+      <span class="card-icon">👥</span>
+      <span class="card-copy"><strong>Jawatankuasa &amp; Carta Organisasi</strong><small>Struktur jawatankuasa dan carta organisasi Unit Bimbingan dan Kaunseling.</small></span>
+      <span class="card-arrow">→</span>
+    </button>
+<button class="module-card" type="button" data-module="visi-misi" data-search="visi &amp; misi visi, misi dan fokus pembangunan murid ubk smk buluh kasap. visi misi">
+      <span class="card-icon">🎯</span>
+      <span class="card-copy"><strong>Visi &amp; Misi</strong><small>Visi, misi dan fokus pembangunan murid UBK SMK Buluh Kasap.</small></span>
+      <span class="card-arrow">→</span>
+    </button>
+<button class="module-card" type="button" data-module="pekeliling" data-search="pekeliling &amp; rujukan kaunseling pusat rujukan digital pekeliling, garis panduan dan dokumen kaunseling. pekeliling rujukan garis panduan dokumen">
+      <span class="card-icon">📚</span>
+      <span class="card-copy"><strong>Pekeliling &amp; Rujukan Kaunseling</strong><small>Pusat rujukan digital pekeliling, garis panduan dan dokumen kaunseling.</small></span>
+      <span class="card-arrow">→</span>
+    </button>
+<button class="module-card" type="button" data-module="objektif" data-search="objektif pbnk &amp; piagam pelanggan objektif perkhidmatan dan komitmen piagam pelanggan ubk. objektif pbnk piagam pelanggan">
+      <span class="card-icon">🌟</span>
+      <span class="card-copy"><strong>Objektif PBNK &amp; Piagam Pelanggan</strong><small>Objektif perkhidmatan dan komitmen Piagam Pelanggan UBK.</small></span>
+      <span class="card-arrow">→</span>
+    </button>
+<button class="module-card" type="button" data-module="jadual" data-search="jadual waktu gbksm 2026 paparan jadual perkhidmatan gbksm tanpa gambar kaunselor. jadual waktu gbksm haslinda nurul">
+      <span class="card-icon">🗓️</span>
+      <span class="card-copy"><strong>Jadual Waktu GBKSM 2026</strong><small>Paparan jadual perkhidmatan GBKSM tanpa gambar kaunselor.</small></span>
+      <span class="card-arrow">→</span>
+    </button>
+<button class="module-card" type="button" data-module="online" data-search="perkhidmatan atas talian hub digital dan saluran telegram gbksm mengikut tingkatan. perkhidmatan atas talian telegram tingkatan">
+      <span class="card-icon">📲</span>
+      <span class="card-copy"><strong>Perkhidmatan Atas Talian</strong><small>Hub digital dan saluran Telegram GBKSM mengikut tingkatan.</small></span>
+      <span class="card-arrow">→</span>
+    </button>
+<button class="module-card" type="button" data-module="psikososial" data-search="talian sokongan psikososial sokongan psikososial, maklumat perkhidmatan dan bahan video. talian sokongan psikososial bantuan video">
+      <span class="card-icon">💜</span>
+      <span class="card-copy"><strong>Talian Sokongan Psikososial</strong><small>Sokongan psikososial, maklumat perkhidmatan dan bahan video.</small></span>
+      <span class="card-arrow">→</span>
+    </button>
+<button class="module-card" type="button" data-module="nadi" data-search="n.a.d.i smeks identiti, huraian dan nilai n.a.d.i smeks — jiwa dijaga, potensi dijana. nadi smeks jiwa dijaga potensi dijana">
+      <span class="card-icon">💚</span>
+      <span class="card-copy"><strong>N.A.D.I SMeKs</strong><small>Identiti, huraian dan nilai N.A.D.I SMeKs — Jiwa Dijaga, Potensi Dijana.</small></span>
+      <span class="card-arrow">→</span>
+    </button></div>
+    </section>
+
+    <section class="viewer" id="viewer">
+      <iframe id="contentFrame" title="Paparan modul One Stop Centre" loading="eager"></iframe>
+    </section>
+  </main>
+</div>
+<div class="loading" id="loading">Memuatkan modul…</div>
+
+<script>
+const modules = [{"id": "menu-induk", "file": "pages/legacy-home.html", "icon": "🏠", "title": "Menu Induk One Stop Centre", "desc": "Paparan menu lengkap One Stop Centre dan struktur perkhidmatan UBK.", "group": "Utama", "keywords": "utama menu induk one stop centre ubk"}, {"id": "jawatankuasa", "file": "pages/jawatankuasa.html", "icon": "👥", "title": "Jawatankuasa & Carta Organisasi", "desc": "Struktur jawatankuasa dan carta organisasi Unit Bimbingan dan Kaunseling.", "group": "Utama", "keywords": "jawatankuasa carta organisasi"}, {"id": "visi-misi", "file": "pages/visi-misi.html", "icon": "🎯", "title": "Visi & Misi", "desc": "Visi, misi dan fokus pembangunan murid UBK SMK Buluh Kasap.", "group": "Utama", "keywords": "visi misi"}, {"id": "pekeliling", "file": "pages/pekeliling-rujukan.html", "icon": "📚", "title": "Pekeliling & Rujukan Kaunseling", "desc": "Pusat rujukan digital pekeliling, garis panduan dan dokumen kaunseling.", "group": "Utama", "keywords": "pekeliling rujukan garis panduan dokumen"}, {"id": "objektif", "file": "pages/objektif-pbnk.html", "icon": "🌟", "title": "Objektif PBNK & Piagam Pelanggan", "desc": "Objektif perkhidmatan dan komitmen Piagam Pelanggan UBK.", "group": "Utama", "keywords": "objektif pbnk piagam pelanggan"}, {"id": "jadual", "file": "pages/jadual-gbksm.html", "icon": "🗓️", "title": "Jadual Waktu GBKSM 2026", "desc": "Paparan jadual perkhidmatan GBKSM tanpa gambar kaunselor.", "group": "Utama", "keywords": "jadual waktu gbksm haslinda nurul"}, {"id": "online", "file": "pages/perkhidmatan-atas-talian.html", "icon": "📲", "title": "Perkhidmatan Atas Talian", "desc": "Hub digital dan saluran Telegram GBKSM mengikut tingkatan.", "group": "Perkhidmatan Digital", "keywords": "perkhidmatan atas talian telegram tingkatan"}, {"id": "psikososial", "file": "pages/talian-sokongan.html", "icon": "💜", "title": "Talian Sokongan Psikososial", "desc": "Sokongan psikososial, maklumat perkhidmatan dan bahan video.", "group": "Perkhidmatan Digital", "keywords": "talian sokongan psikososial bantuan video"}, {"id": "nadi", "file": "pages/nadi.html", "icon": "💚", "title": "N.A.D.I SMeKs", "desc": "Identiti, huraian dan nilai N.A.D.I SMeKs — Jiwa Dijaga, Potensi Dijana.", "group": "Media & Pameran", "keywords": "nadi smeks jiwa dijaga potensi dijana"}];
+const byId = Object.fromEntries(modules.map(m => [m.id,m]));
+const home = document.getElementById('home');
+const viewer = document.getElementById('viewer');
+const frame = document.getElementById('contentFrame');
+const loading = document.getElementById('loading');
+const titleEl = document.getElementById('pageTitle');
+const groupEl = document.getElementById('groupName');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+
+let current = null;
+
+function closeSidebar(){
+  sidebar.classList.remove('open');
+  overlay.classList.remove('show');
+}
+
+function showHome(updateHash=true){
+  current = null;
+  viewer.classList.remove('active');
+  home.style.display = 'block';
+  frame.removeAttribute('src');
+  titleEl.textContent = 'Laman Utama';
+  groupEl.textContent = 'Utama';
+  document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));
+  if(updateHash) history.replaceState(null,'',location.pathname);
+  closeSidebar();
+  window.scrollTo(0,0);
+}
+
+function openModule(id, updateHash=true){
+  const m = byId[id];
+  if(!m) return;
+  current = m;
+  home.style.display = 'none';
+  viewer.classList.add('active');
+  loading.classList.add('show');
+  frame.src = m.file;
+  titleEl.textContent = m.title;
+  groupEl.textContent = m.group;
+  document.querySelectorAll('.nav-item').forEach(x=>x.classList.toggle('active',x.dataset.module===id));
+  if(updateHash) history.replaceState(null,'','#'+id);
+  closeSidebar();
+}
+
+frame.addEventListener('load',()=>loading.classList.remove('show'));
+document.querySelectorAll('[data-module]').forEach(el=>el.addEventListener('click',()=>openModule(el.dataset.module)));
+
+document.getElementById('homeBtn').addEventListener('click',()=>showHome());
+document.getElementById('menuIndukBtn').addEventListener('click',()=>openModule('menu-induk'));
+document.getElementById('exploreBtn').addEventListener('click',()=>openModule('menu-induk'));
+document.getElementById('onlineBtn').addEventListener('click',()=>openModule('online'));
+document.getElementById('newTabBtn').addEventListener('click',()=>{
+  if(current) window.open(current.file,'_blank');
+});
+
+document.getElementById('menuBtn').addEventListener('click',()=>{
+  sidebar.classList.toggle('open'); overlay.classList.toggle('show');
+});
+overlay.addEventListener('click',closeSidebar);
+
+document.getElementById('menuSearch').addEventListener('input',e=>{
+  const q=e.target.value.toLowerCase().trim();
+  let shown=0;
+  document.querySelectorAll('.nav-item').forEach(el=>{
+    const ok=!q || el.dataset.search.includes(q);
+    el.style.display=ok?'flex':'none';
+    if(ok) shown++;
+  });
+  document.querySelectorAll('.nav-group').forEach(g=>{
+    const any=[...g.querySelectorAll('.nav-item')].some(x=>x.style.display!=='none');
+    g.style.display=any?'block':'none';
+  });
+  document.getElementById('navEmpty').style.display=shown?'none':'block';
+});
+
+window.addEventListener('keydown',e=>{
+  if(e.key==='Escape') showHome();
+  if(e.key==='/' && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)){
+    e.preventDefault(); document.getElementById('menuSearch').focus();
+  }
+});
+
+window.addEventListener('message',e=>{
+  if(e.data && e.data.type==='osc-home') showHome();
+});
+
+const initial = location.hash.replace('#','');
+if(initial && byId[initial]) openModule(initial,false); else showHome(false);
+</script>
+</body>
+</html>

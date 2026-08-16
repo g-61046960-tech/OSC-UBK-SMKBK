@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Galeri Komik NADI SMeKs | SMK Buluh Kasap</title>
+<meta name="description" content="Laman web komik Unit Bimbingan dan Kaunseling SMK Buluh Kasap">
+<style>
+:root{
+  --ink:#181327;--purple:#5b21b6;--purple2:#8b5cf6;--pink:#ec4899;--yellow:#facc15;
+  --cyan:#22d3ee;--paper:#fffdf8;--soft:#f6f0ff;--line:#dfd3f2;--muted:#6b647a;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:#f8f4ff;color:var(--ink)}
+a{color:inherit;text-decoration:none} button,input{font:inherit}
+.sitebar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 4vw;background:#241138;color:white;box-shadow:0 8px 24px rgba(0,0,0,.16)}
+.brand{display:flex;align-items:center;gap:12px} .brand img{width:52px;height:52px;object-fit:contain;background:white;border-radius:12px;padding:3px}
+.brand strong{display:block;font-size:1rem} .brand span{font-size:.8rem;color:#e9dcff}
+.back{padding:10px 13px;border-radius:999px;background:#ffffff14;border:1px solid #ffffff25;color:white;font-weight:800}
+.hero{position:relative;overflow:hidden;background:
+radial-gradient(circle at 12% 25%,#ffffff22 0 4%,transparent 4.5%),
+linear-gradient(135deg,#5b21b6 0%,#8b5cf6 55%,#ec4899 100%);color:white;padding:58px 4vw 46px}
+.hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(#ffffff22 1.3px,transparent 1.3px);background-size:14px 14px;opacity:.45}
+.hero-wrap{position:relative;z-index:1;max-width:1280px;margin:auto;display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center}
+.kicker{display:inline-block;background:var(--yellow);color:#23102f;padding:8px 13px;border:3px solid #22142e;box-shadow:5px 5px 0 #22142e;transform:rotate(-1deg);font-weight:950}
+.hero h1{font-size:clamp(2.8rem,6vw,6rem);line-height:.92;margin:24px 0 16px;text-transform:uppercase;letter-spacing:-2px;text-shadow:4px 5px 0 #311449}
+.hero h1 span{color:var(--yellow)} .hero p{font-size:1.03rem;line-height:1.75;max-width:780px;color:#f8efff}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:23px} .btn{border:none;border-radius:13px;padding:12px 16px;font-weight:900;cursor:pointer}
+.btn-main{background:var(--yellow);color:#2a1735;box-shadow:4px 4px 0 #2a1735} .btn-ghost{background:#ffffff16;color:white;border:1px solid #ffffff35}
+.hero-art{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:center}
+.logo-box{background:#fff;border:4px solid #29143a;box-shadow:8px 8px 0 #29143a;border-radius:20px;padding:14px;min-height:180px;display:grid;place-items:center;transform:rotate(1deg)}
+.logo-box:nth-child(2){transform:rotate(-2deg)} .logo-box img{max-height:145px;object-fit:contain}
+
+.main{max-width:1280px;margin:auto;padding:34px 4vw 70px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:-58px;position:relative;z-index:4}
+.stat{background:white;border:3px solid #2b1839;border-radius:18px;padding:18px;box-shadow:6px 6px 0 #2b1839} .stat b{font-size:1.7rem;display:block;color:var(--purple)} .stat span{font-size:.84rem;color:var(--muted)}
+.section{margin-top:42px} .section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:16px}
+.section-head h2{margin:0;font-size:1.7rem} .section-head p{margin:5px 0 0;color:var(--muted);line-height:1.6}
+.speech-title{display:inline-block;padding:8px 13px;background:#fff;border:3px solid #29143a;border-radius:14px;box-shadow:5px 5px 0 var(--yellow);font-weight:950}
+.toolbar{display:grid;grid-template-columns:1fr auto;gap:14px;margin-top:20px}
+.search{background:white;border:2px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;gap:10px} .search input{border:none;outline:none;width:100%;background:transparent}
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end} .filter{border:2px solid #d8c7ef;background:white;color:#5b21b6;border-radius:999px;padding:9px 12px;font-weight:850;cursor:pointer}
+.filter.active{background:#5b21b6;color:white;border-color:#5b21b6}
+.series-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.series-card{background:linear-gradient(160deg,#fff,#fbf7ff);border:2px solid #e1d4f1;border-radius:19px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;box-shadow:0 10px 24px #4b1d7712}
+.series-emoji{font-size:2rem} .series-card h3{margin:0 0 5px;font-size:1rem} .series-card p{margin:0;color:var(--muted);font-size:.86rem;line-height:1.5}
+.series-card button{grid-column:1/-1;border:none;background:#f0e7ff;color:#5b21b6;border-radius:11px;padding:9px;font-weight:850;cursor:pointer}
+.comic-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.comic-card{position:relative;background:var(--paper);border:3px solid #281638;border-radius:18px;overflow:hidden;box-shadow:6px 6px 0 #281638;display:flex;flex-direction:column;min-height:280px}
+.comic-card:before{content:"";position:absolute;right:-25px;top:-25px;width:90px;height:90px;border-radius:50%;background:#facc1530}
+.comic-number{position:absolute;top:10px;left:10px;background:var(--yellow);border:2px solid #281638;border-radius:9px;padding:5px 8px;font-weight:950;font-size:.75rem;transform:rotate(-2deg)}
+.comic-icon{font-size:2rem;padding:52px 16px 0} .comic-body{padding:9px 16px 14px;flex:1} .comic-category{font-size:.72rem;font-weight:900;color:#7c3aed;text-transform:uppercase}
+.comic-card h3{margin:5px 0 7px;font-size:1.08rem} .comic-card p{margin:0;color:var(--muted);font-size:.84rem;line-height:1.55}
+.comic-values{margin-top:12px;padding-top:10px;border-top:1px dashed #d9ccea;font-size:.75rem;font-weight:800;color:#78668f}
+.read-btn{border:none;background:#5b21b6;color:white;padding:11px 13px;font-weight:900;cursor:pointer}
+.read-btn:hover{background:#7c3aed}
+.drive-panel{border:3px solid #281638;border-radius:22px;overflow:hidden;background:white;box-shadow:8px 8px 0 var(--yellow)}
+.drive-head{padding:18px;background:linear-gradient(135deg,#2e1543,#5b21b6);color:white;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.drive-head h3{margin:0} .drive-head p{margin:5px 0 0;color:#eadfff;font-size:.88rem} .drive-head a{padding:10px 13px;background:var(--yellow);color:#241330;border-radius:11px;font-weight:900}
+.selected{display:none;margin:14px 18px 0;background:#f5efff;color:#5b21b6;border-radius:12px;padding:10px 12px;font-weight:800}
+.selected.show{display:block} .drive-frame{width:100%;height:650px;border:0;background:white}
+.note{margin-top:14px;color:var(--muted);font-size:.83rem;line-height:1.6}
+.footer{background:#241138;color:#e9ddf7;text-align:center;padding:28px 4vw;border-top:5px solid var(--yellow)} .footer b{color:white} .designer{margin-top:12px;color:var(--yellow);font-weight:900}
+.empty{display:none;padding:28px;text-align:center;color:var(--muted);background:white;border:2px dashed #d7cae9;border-radius:16px}
+
+.staff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.staff-card{background:white;border:3px solid #2b1839;border-radius:22px;overflow:hidden;box-shadow:6px 6px 0 #2b1839}
+.staff-card img{width:100%;height:360px;object-fit:cover;object-position:center top;background:#eae8ff;display:block}
+.staff-body{padding:16px 16px 18px}
+.staff-tag{display:inline-block;background:#f0e7ff;color:#5b21b6;border:2px solid #d9c7f2;border-radius:999px;padding:6px 10px;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.2px}
+.staff-body h3{margin:12px 0 5px;font-size:1.15rem;color:#251533}
+.staff-role{margin:0;color:#ec4899;font-weight:900}
+.staff-desc{margin:9px 0 0;color:var(--muted);line-height:1.65;font-size:.88rem}
+.logo-ribbon{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.logo-ribbon img{width:44px;height:44px;object-fit:contain;border-radius:10px;background:#fff;border:1px solid #e7dbf5;padding:4px}
+.logo-ribbon span{font-size:.84rem;color:var(--muted);font-weight:700}
+@media(max-width:720px){.staff-grid{grid-template-columns:1fr}.staff-card img{height:320px}}
+
+@media(max-width:1050px){.hero-wrap{grid-template-columns:1fr}.comic-grid{grid-template-columns:repeat(3,1fr)}.series-grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.sitebar{align-items:flex-start}.hero{padding-top:40px}.hero-art{grid-template-columns:1fr 1fr}.logo-box{min-height:120px}.logo-box img{max-height:95px}.toolbar{grid-template-columns:1fr}.filters{justify-content:flex-start}.comic-grid{grid-template-columns:1fr 1fr}.series-grid{grid-template-columns:1fr}.drive-frame{height:520px}}
+@media(max-width:480px){.comic-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.hero h1{font-size:2.7rem}}
+</style>
+
+<style id="osc-shell-integration">
+  .topbar,.sitebar{display:none!important}
+  body{padding-top:0!important}
+  html{scroll-padding-top:0!important}
+</style>
+
+</head>
+<body>
+<header class="sitebar">
+  <div class="brand">
+    <img src="komik_media/logo-smkbk.jpg" alt="Logo SMK Buluh Kasap">
+    <div><strong>GALERI KOMIK NADI SMeKs</strong><span>Unit Bimbingan dan Kaunseling · SMK Buluh Kasap</span></div>
+  </div>
+  <a class="back" href="../index.html" target="_top">← One Stop Centre</a>
+</header>
+
+<section class="hero">
+  <div class="hero-wrap">
+    <div>
+      <div class="kicker">PROGRAM SATU MINGGU SATU KOMIK</div>
+      <h1>Galeri <span>Komik</span><br>NADI SMeKs</h1>
+      <p>Himpunan komik psikopendidikan untuk membina sahsiah, meningkatkan kesedaran, menggalakkan refleksi dan membantu murid membuat pilihan yang lebih positif.</p>
+      <div class="hero-buttons">
+        <button class="btn btn-main" onclick="document.getElementById('tajuk').scrollIntoView()">Lihat 52 Tajuk</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('drive').scrollIntoView()">Buka Koleksi Komik</button>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="logo-box"><img src="komik_media/logo-nadi.jpg" alt="Logo NADI SMeKs"></div>
+      <div class="logo-box"><img src="komik_media/logo-smkbk.jpg" alt="Logo SMK Buluh Kasap"></div>
+    </div>
+  </div>
+</section>
+
+<main class="main">
+  <div class="stats">
+    <div class="stat"><b>52</b><span>Tajuk cadangan komik sepanjang tahun</span></div>
+    <div class="stat"><b>1</b><span>Komik baharu setiap minggu</span></div>
+    <div class="stat"><b>UBK</b><span>Peneraju psikopendidikan visual</span></div>
+    <div class="stat"><b>Digital</b><span>Boleh dibaca melalui galeri Google Drive</span></div>
+  </div>
+
+  <section class="section">
+    <div class="section-head">
+      <div><span class="speech-title">Wajah penggerak</span><h2>Guru Bimbingan & Kaunseling</h2><p>Halaman galeri komik ini menggunakan fail komik yang disertakan dan diperkemas dengan imej rasmi UBK secara tersusun serta bersesuaian.</p></div>
+    </div>
+    <div class="staff-grid">
+      <article class="staff-card">
+        <img src="komik_media/haslinda.jpg" alt="Cikgu Haslinda binti Mohd Farip">
+        <div class="staff-body">
+          <span class="staff-tag">Kaunselor 1</span>
+          <h3>Cikgu Haslinda binti Mohd Farip</h3>
+          <p class="staff-role">Guru Bimbingan dan Kaunseling</p>
+          <p class="staff-desc">Menggerakkan bahan psikopendidikan, promosi kesejahteraan emosi dan intervensi bimbingan melalui medium komik yang dekat dengan murid.</p>
+        </div>
+      </article>
+      <article class="staff-card">
+        <img src="komik_media/nurul.jpg" alt="Cikgu Nurul Jalilah binti Abdul Rahman">
+        <div class="staff-body">
+          <span class="staff-tag">Kaunselor 2</span>
+          <h3>Cikgu Nurul Jalilah binti Abdul Rahman</h3>
+          <p class="staff-role">Guru Bimbingan dan Kaunseling</p>
+          <p class="staff-desc">Bersama memperkukuh pendekatan bimbingan yang kreatif, visual dan mesra murid bagi membina sahsiah serta budaya sekolah positif.</p>
+          <div class="logo-ribbon">
+            <img src="komik_media/logo-nadi.jpg" alt="Logo NADI SMeKs">
+            <img src="komik_media/logo-smkbk.jpg" alt="Logo Sekolah">
+            <span>N.A.D.I SMeKs · Unit Bimbingan & Kaunseling SMK Buluh Kasap</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div><span class="speech-title">Siri komik pilihan</span><h2>Koleksi bertema murid & sekolah</h2><p>Beberapa siri komik yang telah digunakan dalam projek psikopendidikan dan bahan UBK.</p></div>
+    </div>
+    <div class="series-grid"><div class="series-card">
+      <div class="series-emoji">🗯️</div>
+      <div><h3>Jangan Biasakan Mencarut</h3><p>Bahasa baik membina diri dan hubungan.</p></div>
+      <button onclick='focusDrive("Jangan Biasakan Mencarut")'>Lihat koleksi</button>
+    </div>
+<div class="series-card">
+      <div class="series-emoji">⏰</div>
+      <div><h3>Masa Emas Seorang Pelajar</h3><p>Pengurusan masa, disiplin dan kejayaan pelajar.</p></div>
+      <button onclick='focusDrive("Masa Emas Seorang Pelajar")'>Lihat koleksi</button>
+    </div>
+<div class="series-card">
+      <div class="series-emoji">💗</div>
+      <div><h3>Aku Masih Mahu Hidup</h3><p>Kesejahteraan emosi, harapan dan keberanian meminta bantuan.</p></div>
+      <button onclick='focusDrive("Aku Masih Mahu Hidup")'>Lihat koleksi</button>
+    </div>
+<div class="series-card">
+      <div class="series-emoji">🏡</div>
+      <div><h3>Ziarah Cakna</h3><p>Sokongan sekolah, keluarga dan peluang kedua untuk murid.</p></div>
+      <button onclick='focusDrive("Ziarah Cakna")'>Lihat koleksi</button>
+    </div>
+<div class="series-card">
+      <div class="series-emoji">🫂</div>
+      <div><h3>Sahabat Sejati</h3><p>Persahabatan, pilihan positif dan pencegahan dadah.</p></div>
+      <button onclick='focusDrive("Sahabat Sejati")'>Lihat koleksi</button>
+    </div>
+<div class="series-card">
+      <div class="series-emoji">🌙</div>
+      <div><h3>Lepak Sampai Lupa Masa</h3><p>Mengurus masa, keselamatan dan tanggungjawab diri.</p></div>
+      <button onclick='focusDrive("Lepak Sampai Lupa Masa")'>Lihat koleksi</button>
+    </div>
+<div class="series-card">
+      <div class="series-emoji">🏫</div>
+      <div><h3>Seronoknya Ke Sekolah</h3><p>Kehadiran, persahabatan dan pengalaman positif di sekolah.</p></div>
+      <button onclick='focusDrive("Seronoknya Ke Sekolah")'>Lihat koleksi</button>
+    </div></div>
+  </section>
+
+  <section class="section" id="tajuk">
+    <div class="section-head">
+      <div><span class="speech-title">52 tajuk komik</span><h2>Katalog mengikut tajuk</h2><p>Cari tajuk atau tapis mengikut kategori. Klik “Cari komik ini” untuk bergerak ke paparan koleksi Google Drive.</p></div>
+    </div>
+
+    <div class="toolbar">
+      <label class="search">🔎 <input id="searchComic" type="search" placeholder="Cari tajuk komik..." oninput="applyFilter()"></label>
+      <div class="filters">
+        <button class="filter active" data-cat="semua" onclick="setCategory('semua',this)">Semua</button>
+        <button class="filter" data-cat="disiplin" onclick="setCategory('disiplin',this)">Disiplin</button>
+        <button class="filter" data-cat="sahsiah" onclick="setCategory('sahsiah',this)">Sahsiah</button>
+        <button class="filter" data-cat="kesejahteraan" onclick="setCategory('kesejahteraan',this)">Kesejahteraan</button>
+        <button class="filter" data-cat="digital" onclick="setCategory('digital',this)">Digital</button>
+        <button class="filter" data-cat="kerjaya" onclick="setCategory('kerjaya',this)">Kerjaya</button>
+        <button class="filter" data-cat="kepimpinan" onclick="setCategory('kepimpinan',this)">Kepimpinan</button>
+      </div>
+    </div>
+
+    <div class="comic-grid" id="comicGrid">
+      
+      <article class="comic-card" data-title="ponteng rugi besar" data-cat="disiplin">
+        <div class="comic-number">MG 01</div>
+        <div class="comic-icon">🎯</div>
+        <div class="comic-body">
+          <span class="comic-category">Disiplin & Sekolah</span>
+          <h3>Ponteng Rugi Besar</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Ponteng Rugi Besar")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="lewat lagi?" data-cat="disiplin">
+        <div class="comic-number">MG 02</div>
+        <div class="comic-icon">🎯</div>
+        <div class="comic-body">
+          <span class="comic-category">Disiplin & Sekolah</span>
+          <h3>Lewat Lagi?</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Lewat Lagi?")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="buli bukan gurauan" data-cat="sahsiah">
+        <div class="comic-number">MG 03</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Buli Bukan Gurauan</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Buli Bukan Gurauan")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="satu kata seribu luka" data-cat="sahsiah">
+        <div class="comic-number">MG 04</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Satu Kata Seribu Luka</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Satu Kata Seribu Luka")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="body shaming" data-cat="sahsiah">
+        <div class="comic-number">MG 05</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Body Shaming</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Body Shaming")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="bahaya vape" data-cat="kesejahteraan">
+        <div class="comic-number">MG 06</div>
+        <div class="comic-icon">💚</div>
+        <div class="comic-body">
+          <span class="comic-category">Kesejahteraan Diri</span>
+          <h3>Bahaya Vape</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Bahaya Vape")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="rokok bukan gaya" data-cat="kesejahteraan">
+        <div class="comic-number">MG 07</div>
+        <div class="comic-icon">💚</div>
+        <div class="comic-body">
+          <span class="comic-category">Kesejahteraan Diri</span>
+          <h3>Rokok Bukan Gaya</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Rokok Bukan Gaya")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="gangguan seksual" data-cat="sahsiah">
+        <div class="comic-number">MG 08</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Gangguan Seksual</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Gangguan Seksual")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="telefon pintar berhemah" data-cat="digital">
+        <div class="comic-number">MG 09</div>
+        <div class="comic-icon">📱</div>
+        <div class="comic-body">
+          <span class="comic-category">Digital & Keselamatan</span>
+          <h3>Telefon Pintar Berhemah</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Telefon Pintar Berhemah")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="media sosial beretika" data-cat="digital">
+        <div class="comic-number">MG 10</div>
+        <div class="comic-icon">📱</div>
+        <div class="comic-body">
+          <span class="comic-category">Digital & Keselamatan</span>
+          <h3>Media Sosial Beretika</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Media Sosial Beretika")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="sahabat sejati" data-cat="sahsiah">
+        <div class="comic-number">MG 11</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Sahabat Sejati</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Sahabat Sejati")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="tekanan peperiksaan" data-cat="kesejahteraan">
+        <div class="comic-number">MG 12</div>
+        <div class="comic-icon">💚</div>
+        <div class="comic-body">
+          <span class="comic-category">Kesejahteraan Diri</span>
+          <h3>Tekanan Peperiksaan</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Tekanan Peperiksaan")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="mengurus emosi" data-cat="kesejahteraan">
+        <div class="comic-number">MG 13</div>
+        <div class="comic-icon">💚</div>
+        <div class="comic-body">
+          <span class="comic-category">Kesejahteraan Diri</span>
+          <h3>Mengurus Emosi</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Mengurus Emosi")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="marah tidak menyelesaikan masalah" data-cat="sahsiah">
+        <div class="comic-number">MG 14</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Marah Tidak Menyelesaikan Masalah</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Marah Tidak Menyelesaikan Masalah")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="jujur itu hebat" data-cat="sahsiah">
+        <div class="comic-number">MG 15</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Jujur Itu Hebat</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Jujur Itu Hebat")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="hormat guru" data-cat="sahsiah">
+        <div class="comic-number">MG 16</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Hormat Guru</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Hormat Guru")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="hormat ibu bapa" data-cat="sahsiah">
+        <div class="comic-number">MG 17</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Hormat Ibu Bapa</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Hormat Ibu Bapa")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="keselamatan siber" data-cat="digital">
+        <div class="comic-number">MG 18</div>
+        <div class="comic-icon">📱</div>
+        <div class="comic-body">
+          <span class="comic-category">Digital & Keselamatan</span>
+          <h3>Keselamatan Siber</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Keselamatan Siber")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="scammer dalam talian" data-cat="digital">
+        <div class="comic-number">MG 19</div>
+        <div class="comic-icon">📱</div>
+        <div class="comic-body">
+          <span class="comic-category">Digital & Keselamatan</span>
+          <h3>Scammer Dalam Talian</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Scammer Dalam Talian")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="bijak mengurus masa" data-cat="kerjaya">
+        <div class="comic-number">MG 20</div>
+        <div class="comic-icon">🚀</div>
+        <div class="comic-body">
+          <span class="comic-category">Masa Depan & Kerjaya</span>
+          <h3>Bijak Mengurus Masa</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Bijak Mengurus Masa")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="impian bermula di sekolah" data-cat="kerjaya">
+        <div class="comic-number">MG 21</div>
+        <div class="comic-icon">🚀</div>
+        <div class="comic-body">
+          <span class="comic-category">Masa Depan & Kerjaya</span>
+          <h3>Impian Bermula Di Sekolah</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Impian Bermula Di Sekolah")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="disiplin kunci kejayaan" data-cat="disiplin">
+        <div class="comic-number">MG 22</div>
+        <div class="comic-icon">🎯</div>
+        <div class="comic-body">
+          <span class="comic-category">Disiplin & Sekolah</span>
+          <h3>Disiplin Kunci Kejayaan</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Disiplin Kunci Kejayaan")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="berani berkata tidak" data-cat="sahsiah">
+        <div class="comic-number">MG 23</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Berani Berkata Tidak</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Berani Berkata Tidak")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="pengaruh rakan sebaya" data-cat="sahsiah">
+        <div class="comic-number">MG 24</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Pengaruh Rakan Sebaya</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Pengaruh Rakan Sebaya")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="tidak takut meminta bantuan" data-cat="kesejahteraan">
+        <div class="comic-number">MG 25</div>
+        <div class="comic-icon">💚</div>
+        <div class="comic-body">
+          <span class="comic-category">Kesejahteraan Diri</span>
+          <h3>Tidak Takut Meminta Bantuan</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Tidak Takut Meminta Bantuan")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="kesihatan mental" data-cat="kesejahteraan">
+        <div class="comic-number">MG 26</div>
+        <div class="comic-icon">💚</div>
+        <div class="comic-body">
+          <span class="comic-category">Kesejahteraan Diri</span>
+          <h3>Kesihatan Mental</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Kesihatan Mental")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="tidur berkualiti" data-cat="kesejahteraan">
+        <div class="comic-number">MG 27</div>
+        <div class="comic-icon">💚</div>
+        <div class="comic-body">
+          <span class="comic-category">Kesejahteraan Diri</span>
+          <h3>Tidur Berkualiti</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Tidur Berkualiti")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="pemakanan sihat" data-cat="kesejahteraan">
+        <div class="comic-number">MG 28</div>
+        <div class="comic-icon">💚</div>
+        <div class="comic-body">
+          <span class="comic-category">Kesejahteraan Diri</span>
+          <h3>Pemakanan Sihat</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Pemakanan Sihat")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="anti vandalisme" data-cat="disiplin">
+        <div class="comic-number">MG 29</div>
+        <div class="comic-icon">🎯</div>
+        <div class="comic-body">
+          <span class="comic-category">Disiplin & Sekolah</span>
+          <h3>Anti Vandalisme</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Anti Vandalisme")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="jaga kebersihan" data-cat="disiplin">
+        <div class="comic-number">MG 30</div>
+        <div class="comic-icon">🎯</div>
+        <div class="comic-body">
+          <span class="comic-category">Disiplin & Sekolah</span>
+          <h3>Jaga Kebersihan</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Jaga Kebersihan")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="empati" data-cat="sahsiah">
+        <div class="comic-number">MG 31</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Empati</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Empati")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="tanggungjawab" data-cat="sahsiah">
+        <div class="comic-number">MG 32</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Tanggungjawab</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Tanggungjawab")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="integriti" data-cat="sahsiah">
+        <div class="comic-number">MG 33</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Integriti</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Integriti")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="pemimpin berwibawa" data-cat="kepimpinan">
+        <div class="comic-number">MG 34</div>
+        <div class="comic-icon">⭐</div>
+        <div class="comic-body">
+          <span class="comic-category">Kepimpinan & Potensi</span>
+          <h3>Pemimpin Berwibawa</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Pemimpin Berwibawa")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="prs membantu" data-cat="kepimpinan">
+        <div class="comic-number">MG 35</div>
+        <div class="comic-icon">⭐</div>
+        <div class="comic-body">
+          <span class="comic-category">Kepimpinan & Potensi</span>
+          <h3>PRS Membantu</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("PRS Membantu")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="safe: tiada ruang untuk buli" data-cat="kepimpinan">
+        <div class="comic-number">MG 36</div>
+        <div class="comic-icon">⭐</div>
+        <div class="comic-body">
+          <span class="comic-category">Kepimpinan & Potensi</span>
+          <h3>SAFE: Tiada Ruang Untuk Buli</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("SAFE: Tiada Ruang Untuk Buli")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="aku sayang sekolah" data-cat="disiplin">
+        <div class="comic-number">MG 37</div>
+        <div class="comic-icon">🎯</div>
+        <div class="comic-body">
+          <span class="comic-category">Disiplin & Sekolah</span>
+          <h3>Aku Sayang Sekolah</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Aku Sayang Sekolah")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="stop fitnah" data-cat="sahsiah">
+        <div class="comic-number">MG 38</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Stop Fitnah</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Stop Fitnah")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="jangan sebarkan video" data-cat="digital">
+        <div class="comic-number">MG 39</div>
+        <div class="comic-icon">📱</div>
+        <div class="comic-body">
+          <span class="comic-category">Digital & Keselamatan</span>
+          <h3>Jangan Sebarkan Video</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Jangan Sebarkan Video")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="rahsia yang perlu dilapor" data-cat="sahsiah">
+        <div class="comic-number">MG 40</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Rahsia Yang Perlu Dilapor</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Rahsia Yang Perlu Dilapor")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="etika berpakaian" data-cat="disiplin">
+        <div class="comic-number">MG 41</div>
+        <div class="comic-icon">🎯</div>
+        <div class="comic-body">
+          <span class="comic-category">Disiplin & Sekolah</span>
+          <h3>Etika Berpakaian</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Etika Berpakaian")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="semangat patriotik" data-cat="kepimpinan">
+        <div class="comic-number">MG 42</div>
+        <div class="comic-icon">⭐</div>
+        <div class="comic-body">
+          <span class="comic-category">Kepimpinan & Potensi</span>
+          <h3>Semangat Patriotik</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Semangat Patriotik")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="bersyukur" data-cat="kesejahteraan">
+        <div class="comic-number">MG 43</div>
+        <div class="comic-icon">💚</div>
+        <div class="comic-body">
+          <span class="comic-category">Kesejahteraan Diri</span>
+          <h3>Bersyukur</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Bersyukur")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="budaya membaca" data-cat="kepimpinan">
+        <div class="comic-number">MG 44</div>
+        <div class="comic-icon">⭐</div>
+        <div class="comic-body">
+          <span class="comic-category">Kepimpinan & Potensi</span>
+          <h3>Budaya Membaca</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Budaya Membaca")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="kerjaya masa depan" data-cat="kerjaya">
+        <div class="comic-number">MG 45</div>
+        <div class="comic-icon">🚀</div>
+        <div class="comic-body">
+          <span class="comic-category">Masa Depan & Kerjaya</span>
+          <h3>Kerjaya Masa Depan</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Kerjaya Masa Depan")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="bijak mengurus wang" data-cat="kerjaya">
+        <div class="comic-number">MG 46</div>
+        <div class="comic-icon">🚀</div>
+        <div class="comic-body">
+          <span class="comic-category">Masa Depan & Kerjaya</span>
+          <h3>Bijak Mengurus Wang</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Bijak Mengurus Wang")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="saling menghormati" data-cat="sahsiah">
+        <div class="comic-number">MG 47</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Saling Menghormati</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Saling Menghormati")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="komunikasi berkesan" data-cat="sahsiah">
+        <div class="comic-number">MG 48</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Komunikasi Berkesan</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Komunikasi Berkesan")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="konflik secara damai" data-cat="sahsiah">
+        <div class="comic-number">MG 49</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Konflik Secara Damai</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Konflik Secara Damai")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="jom solat" data-cat="kesejahteraan">
+        <div class="comic-number">MG 50</div>
+        <div class="comic-icon">💚</div>
+        <div class="comic-body">
+          <span class="comic-category">Kesejahteraan Diri</span>
+          <h3>Jom Solat</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Jom Solat")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="terima kasih cikgu" data-cat="sahsiah">
+        <div class="comic-number">MG 51</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Terima Kasih Cikgu</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Terima Kasih Cikgu")'>Cari komik ini</button>
+      </article>
+    
+      <article class="comic-card" data-title="aku boleh berubah" data-cat="sahsiah">
+        <div class="comic-number">MG 52</div>
+        <div class="comic-icon">🤝</div>
+        <div class="comic-body">
+          <span class="comic-category">Sahsiah & Hubungan</span>
+          <h3>Aku Boleh Berubah</h3>
+          <p>Mesej psikopendidikan mingguan untuk meningkatkan kesedaran, refleksi dan perubahan tingkah laku positif.</p>
+          <div class="comic-values">Hormat · Tanggungjawab · Empati</div>
+        </div>
+        <button class="read-btn" onclick='focusDrive("Aku Boleh Berubah")'>Cari komik ini</button>
+      </article>
+    
+    </div>
+    <div class="empty" id="emptyState">Tiada tajuk yang sepadan dengan carian.</div>
+  </section>
+
+  <section class="section" id="drive">
+    <div class="section-head">
+      <div><span class="speech-title">Baca komik</span><h2>Koleksi Google Drive</h2><p>Fail komik dalam folder asal dipaparkan di bawah. Pilih fail berdasarkan tajuk yang dikehendaki.</p></div>
+    </div>
+    <div class="drive-panel">
+      <div class="drive-head">
+        <div><h3>📚 Power Point Komik</h3><p>Paparan folder Google Drive dalam bentuk grid.</p></div>
+        <a href="https://drive.google.com/drive/folders/1X4IREcv9lIDhKW2zvw83vb-BYB04MUvQ?usp=drive_link" target="_blank" rel="noopener noreferrer">Buka Google Drive ↗</a>
+      </div>
+      <div class="selected" id="selectedTitle"></div>
+      <iframe class="drive-frame" src="https://drive.google.com/embeddedfolderview?id=1X4IREcv9lIDhKW2zvw83vb-BYB04MUvQ#grid" title="Koleksi Komik Google Drive" loading="lazy"></iframe>
+    </div>
+    <p class="note">Jika paparan folder tidak muncul pada sesetengah pelayar, gunakan butang “Buka Google Drive”. Folder perlu mempunyai kebenaran perkongsian yang membolehkan pengguna melihat fail.</p>
+  </section>
+</main>
+
+<footer class="footer">
+  <b>Program Satu Minggu Satu Komik Menarik</b><br>
+  Unit Bimbingan dan Kaunseling · SMK Buluh Kasap, Segamat
+  <div class="designer">Design by @Linda</div>
+</footer>
+
+<script>
+let activeCat='semua';
+function setCategory(cat,btn){
+  activeCat=cat;
+  document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilter();
+}
+function applyFilter(){
+  const q=document.getElementById('searchComic').value.toLowerCase().trim();
+  let shown=0;
+  document.querySelectorAll('.comic-card').forEach(card=>{
+    const okCat=activeCat==='semua'||card.dataset.cat===activeCat;
+    const okText=!q||card.dataset.title.includes(q)||card.innerText.toLowerCase().includes(q);
+    const show=okCat&&okText;
+    card.style.display=show?'flex':'none';
+    if(show) shown++;
+  });
+  document.getElementById('emptyState').style.display=shown?'none':'block';
+}
+function focusDrive(title){
+  const box=document.getElementById('selectedTitle');
+  box.textContent='🔎 Tajuk pilihan: “'+title+'”. Cari fail dengan tajuk ini dalam paparan folder di bawah.';
+  box.classList.add('show');
+  document.getElementById('drive').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>

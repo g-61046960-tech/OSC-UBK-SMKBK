@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rahsia Yang Perlu Dilapor | Komik Web NADI SMeKs</title>
+<style>
+:root {
+  --c1:#0ea5e9; --c2:#22c55e; --soft:#f0fdf4; --ink:#23153a; --muted:#685c80; --line:#e9ddf8;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:radial-gradient(circle at 8% 0%, color-mix(in srgb, var(--c1) 10%, white), transparent 26%), linear-gradient(180deg,#fff 0%, var(--soft) 100%);}
+a{color:inherit;text-decoration:none}
+.topbar{position:sticky;top:0;z-index:55;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 4vw;background:rgba(37,20,58,.96);color:#fff;box-shadow:0 8px 22px rgba(0,0,0,.15);backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:12px}
+.badge{width:50px;height:50px;border-radius:14px;background:#fff;display:grid;place-items:center;color:var(--c1);font-size:1.5rem;font-weight:900}
+.brand strong{display:block;font-size:1rem} .brand span{display:block;font-size:.8rem;color:#eadcff;margin-top:3px}
+.navlinks{display:flex;gap:8px;flex-wrap:wrap}
+.navlinks a{padding:10px 13px;border-radius:999px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.17);font-size:.84rem;font-weight:800;color:#fff}
+.hero{position:relative;overflow:hidden;color:#fff;padding:50px 4vw 38px;background:linear-gradient(135deg,var(--c1) 0%, var(--c2) 100%);}
+.hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.18) 1.1px,transparent 1.1px);background-size:17px 17px;opacity:.45}
+.hero-wrap{position:relative;z-index:1;width:min(1180px,100%);margin:auto;display:grid;grid-template-columns:1.08fr .92fr;gap:26px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:8px;background:#ffffff18;border:1px solid #ffffff26;padding:8px 12px;border-radius:999px;font-size:.82rem;font-weight:850}
+.hero h1{margin:16px 0 10px;font-size:clamp(2.4rem,5vw,4.7rem);line-height:.95;letter-spacing:-2px}
+.hero p{margin:0;color:#f7efff;line-height:1.78;max-width:760px}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hero-badges span{padding:9px 12px;border-radius:999px;background:#ffffff14;border:1px solid #ffffff26;font-size:.83rem;font-weight:850}
+.cover-card{background:#fff;color:#2d1747;border-radius:28px;border:4px solid #2d1747;box-shadow:10px 10px 0 #2d1747;padding:24px;min-height:280px;display:grid;place-items:center}
+.cover-inner{text-align:center} .cover-icon{font-size:3rem;margin-bottom:12px} .cover-week{display:inline-block;background:#facc15;border:2px solid #2d1747;border-radius:10px;padding:6px 10px;font-size:.8rem;font-weight:950;margin-bottom:10px} .cover-title{font-size:1.7rem;font-weight:950;line-height:1.1;margin-bottom:10px} .cover-sub{color:#6a5b80;line-height:1.6}
+.main{width:min(1180px,100%);margin:auto;padding:32px 4vw 74px}
+.intro{background:#fff;border:1px solid var(--line);border-radius:23px;padding:22px;box-shadow:0 12px 28px rgba(47,16,73,.08)}
+.intro p{margin:0;color:var(--muted);line-height:1.8}
+.comic-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.panel{position:relative;background:#fff;border:3px solid #29163b;border-radius:24px;overflow:hidden;box-shadow:8px 8px 0 #29163b}
+.panel-head{padding:12px 16px;background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;font-weight:900;font-size:.92rem}
+.panel-body{padding:18px;display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:start;min-height:240px;background:#fff}
+.avatar{width:100%;aspect-ratio:1/1;border-radius:18px;background:linear-gradient(135deg,color-mix(in srgb, var(--c1) 22%, white), color-mix(in srgb, var(--c2) 22%, white));display:grid;place-items:center;font-size:3rem;border:2px solid #eadcf8}
+.bubble{position:relative;background:#faf7ff;border:1px solid #eadcf8;border-radius:20px;padding:15px 16px;color:#4d4263;line-height:1.75}
+.bubble:before{content:"";position:absolute;left:-12px;top:24px;border-width:10px 12px 10px 0;border-style:solid;border-color:transparent #eadcf8 transparent transparent}
+.bubble:after{content:"";position:absolute;left:-10px;top:24px;border-width:10px 12px 10px 0;border-style:solid;border-color:transparent #faf7ff transparent transparent}
+.tip{margin-top:28px;background:linear-gradient(135deg,#fff7cc,#fff2a3);border:2px dashed #c39b0e;border-radius:22px;padding:20px}
+.tip h3{margin:0 0 8px;color:#604500} .tip p{margin:0;color:#6f5f29;line-height:1.75}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.action-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 10px 22px rgba(48,19,72,.07)}
+.action-card h3{margin:0 0 10px;color:#3d185f} .action-card ul{margin:0;padding-left:18px;color:#605376;line-height:1.8}
+.bottom-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:26px}
+.bottom-nav a{padding:12px 15px;border-radius:14px;font-weight:850}
+.bottom-nav .back{background:#f2e9ff;color:#5b21b6} .bottom-nav .all{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff}
+.footer{background:#2f0d53;color:#eadff7;text-align:center;padding:28px 4vw 35px;border-top:5px solid #facc15;margin-top:48px}
+.footer strong{display:block;color:#fff;margin-bottom:5px} .designer{margin-top:11px;color:#f6d365;font-weight:900}
+@media(max-width:920px){.hero-wrap{grid-template-columns:1fr}.comic-grid{grid-template-columns:1fr}}
+@media(max-width:620px){.panel-body{grid-template-columns:1fr}.actions{grid-template-columns:1fr}}
+</style>
+
+<style id="osc-shell-integration">
+  /* Embedded inside the master One Stop Centre shell */
+  .topbar,.sitebar{display:none!important}
+  body{padding-top:0!important}
+  html{scroll-padding-top:0!important}
+</style>
+
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="badge">🤝</div>
+    <div><strong>Rahsia Yang Perlu Dilapor</strong><span>Sahsiah & Hubungan · Komik Web NADI SMeKs</span></div>
+  </div>
+  <div class="navlinks">
+    <a href="komik.html">← Kembali ke Galeri</a>
+    <a href="../index.html" target="_top">One Stop Centre</a>
+  </div>
+</header>
+<section class="hero">
+  <div class="hero-wrap">
+    <div>
+      <div class="kicker">MINGGU 40 · SAHSIAH & HUBUNGAN</div>
+      <h1>Rahsia Yang Perlu Dilapor</h1>
+      <p>Komik web ini diolah berdasarkan tajuk psikopendidikan sekolah untuk menyampaikan mesej yang lebih jelas, menarik dan mudah difahami oleh murid.</p>
+      <div class="hero-badges">
+        <span>🤝 Sahsiah & Hubungan</span>
+        <span>💬 Gaya laman web komik</span>
+        <span>🎓 Unit Bimbingan & Kaunseling</span>
+      </div>
+    </div>
+    <div class="cover-card">
+      <div class="cover-inner">
+        <div class="cover-week">KOMIK 40</div>
+        <div class="cover-icon">🤝</div>
+        <div class="cover-title">Rahsia Yang Perlu Dilapor</div>
+        <div class="cover-sub">SMK Buluh Kasap · Jiwa Dijaga, Potensi Dijana</div>
+      </div>
+    </div>
+  </div>
+</section>
+<main class="main">
+  <section class="intro">
+    <p>Komik ini membawa mesej pendidikan melalui situasi yang dekat dengan kehidupan murid di sekolah. Baca setiap panel dan hayati pengajarannya.</p>
+  </section>
+  <section class="comic-grid">
+    <article class="panel"><div class="panel-head">Permulaan</div><div class="panel-body"><div class="avatar">🧑‍🎓</div><div class="bubble">Aina tidak sedar bahawa sikap, kata-kata dan cara bergaul boleh meninggalkan kesan mendalam kepada diri sendiri dan orang lain.</div></div></article>
+    <article class="panel"><div class="panel-head">Cabaran</div><div class="panel-body"><div class="avatar">😟</div><div class="bubble">Tidak lama kemudian, Hakim menunjukkan bagaimana tindakan yang tidak berhemah boleh melukakan hati, menjejaskan persahabatan dan mewujudkan konflik.</div></div></article>
+    <article class="panel"><div class="panel-head">Nasihat Kaunselor</div><div class="panel-body"><div class="avatar">👩‍🏫</div><div class="bubble">Cikgu Kaunselor kemudian membimbing mereka melalui komik bertajuk “Rahsia Yang Perlu Dilapor”, lalu menjelaskan bahawa perubahan yang baik selalu bermula dengan kesedaran, pilihan dan tindakan yang berterusan.</div></div></article>
+    <article class="panel"><div class="panel-head">Pengajaran</div><div class="panel-body"><div class="avatar">✨</div><div class="bubble">Kata-kata dan tindakan kita memberi kesan kepada hati orang lain, jadi pilihlah nilai yang membina.</div></div></article>
+  </section>
+  <section class="tip"><h3>Pengajaran Utama</h3><p>Kata-kata dan tindakan kita memberi kesan kepada hati orang lain, jadi pilihlah nilai yang membina.</p></section>
+  <section class="actions">
+    <article class="action-card"><h3>Langkah Positif</h3><ul><li>Bercakap dengan baik</li><li>Hormati orang lain</li><li>Pilih sahabat positif</li></ul></article>
+    <article class="action-card"><h3>Refleksi Diri</h3><ul><li>Apakah mesej paling penting yang saya pelajari daripada komik ini?</li><li>Adakah saya pernah berada dalam situasi seperti ini?</li><li>Apakah satu perubahan kecil yang boleh saya mulakan hari ini?</li></ul></article>
+  </section>
+  <div class="bottom-nav">
+    <a class="back" href="komik.html">← Semua Komik</a>
+    <a class="all" href="../index.html" target="_top">Kembali ke One Stop Centre</a>
+  </div>
+</main>
+<footer class="footer">
+  <strong>Rahsia Yang Perlu Dilapor</strong>
+  <div>Komik Web NADI SMeKs · Unit Bimbingan dan Kaunseling SMK Buluh Kasap</div>
+  <div class="designer">Design by @Linda</div>
+</footer>
+</body>
+</html>
